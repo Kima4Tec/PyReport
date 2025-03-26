@@ -20,7 +20,7 @@ def get_companies():
     companies = []
     for row in cursor.fetchall():
         companies.append({
-            'Id': row[0],
+            'id': row[0],
             'name': row[1],
             'location': row[2],
             'companySize': row[3],
@@ -42,10 +42,10 @@ def create_company():
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("""
-        INSERT INTO dbo.Company (name, location, companySize, creating, facts, offering, companyoffer, motivation, notes)
+        INSERT INTO dbo.Company (name, location, companySize, creating, facts, offering, companyOffer, motivation, notes)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (new_company['name'], new_company['location'], new_company['companySize'], new_company['creating'],
-          new_company['facts'], new_company['offering'], new_company['companyoffer'], new_company['motivation'],
+          new_company['facts'], new_company['offering'], new_company['companyOffer'], new_company['motivation'],
           new_company['notes']))
     conn.commit()
     cursor.close()
@@ -61,10 +61,10 @@ def update_company(id):
     # Opdater forespørgslen
     cursor.execute("""
         UPDATE dbo.Company
-        SET name = ?, location = ?, companySize = ?, creating = ?, facts = ?, offering = ?, companyoffer = ?, motivation = ?, notes = ?
+        SET name = ?, location = ?, companySize = ?, creating = ?, facts = ?, offering = ?, companyOffer = ?, motivation = ?, notes = ?
         WHERE Id = ?
     """, (updated_company['name'], updated_company['location'], updated_company['companySize'], updated_company['creating'],
-          updated_company['facts'], updated_company['offering'], updated_company['companyoffer'], updated_company['motivation'],
+          updated_company['facts'], updated_company['offering'], updated_company['companyOffer'], updated_company['motivation'],
           updated_company['notes'], id))
     
     # Kontrollér om nogen rækker blev opdateret
