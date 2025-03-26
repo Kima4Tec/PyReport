@@ -4,7 +4,7 @@ import pyodbc
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:4200"}})
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:4200", "methods": ["GET", "POST", "PUT", "DELETE"]}})
 
 # Opret forbindelse til SQL Server
 def get_db_connection():
