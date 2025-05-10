@@ -16,11 +16,11 @@ def get_db_connection():
 def get_companies():
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute('SELECT Id, name, Location, CompanySize, Creating, Facts, Offering, CompanyOffer, Motivation, Notes FROM dbo.Company')
+    cursor.execute('SELECT Id, Name, Location, CompanySize, Creating, Facts, Offering, CompanyOffer, Motivation, Notes FROM dbo.Company')
     companies = []
     for row in cursor.fetchall():
         companies.append({
-            'Id': row[0],
+            'id': row[0],
             'name': row[1],
             'location': row[2],
             'companySize': row[3],
